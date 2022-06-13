@@ -10,7 +10,7 @@ describe("Langton", function(){
     var langton;
 
     beforeEach(()=>{
-        langton = new Langton();
+        langton = new Langton({});
     })
 
     it("doit avoir une propriété de configuration", ()=>{
@@ -23,5 +23,13 @@ describe("Langton", function(){
 
     it("doit avoir une largeur de 10 par défault", ()=>{
         expect(langton.config.largeur).toBe(10);
+    });
+
+    it("doit pouvoir surcharger la configuration lors de l'initialisation", ()=>{
+        langton = new Langton({hauteur: 20, largeur: 20});
+        expect(langton.config.hauteur).toBe(20);
+        expect(langton.config.largeur).toBe(20);
     })
+
+
 });

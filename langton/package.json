@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "watch": {
+    "test": "**/*.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jasmine",
+    "watch": "npm-watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jasmine": "^4.2.0"
+  },
+  "dependencies": {
+    "npm-watch": "^0.11.0"
   }
 }
