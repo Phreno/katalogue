@@ -21,26 +21,12 @@ describe("Langton", function () {
     it("doit connaitre la position et la direction de la fourmi", () => {
         expect(langton.x).toBe(0);
         expect(langton.y).toBe(0);
-        expect(langton.direction).toBeDefined();
     })
 
     it("doit pouvoir dire si la fourmi est sur une case noire", () => {
         langton.grille = [{ x: 0, y: 0 }];
         expect(langton.estSurUneCaseNoire()).toBeTruthy();
     })
-
-    it("doit tourner à gauche si la case est blanche", () => {
-        langton.grille = [];
-        expect(langton.estSurUneCaseNoire()).toBeFalsy();
-        expect(langton.direction()).toBe('gauche');
-    })
-
-    it("doit tourner à droite si la case est noire", () => {
-        langton.grille = [{ x: 0, y: 0 }];
-        expect(langton.estSurUneCaseNoire()).toBeTruthy();
-        expect(langton.direction()).toBe('droite');
-    })
-
 
 
     describe("pour tourner", () => {
@@ -51,15 +37,7 @@ describe("Langton", function () {
         // -1, 0    |[0, 0] | 1, 0
         // -1, 1    | 0, 1  | 1, 1
         // ========================
-        it("doit pouvoir localiser les cases voisines", () => {
-            expect(langton.voisinage).toEqual([
-                { x: -1, y: 0 },
-                { x: 0, y: -1 },
-                { x: 1, y: 0 },
-                { x: 0, y: 1 }
-            ]);
 
-        })
 
         it("doit historiser les positions de la fourmi", () =>
             expect(langton.historique)
