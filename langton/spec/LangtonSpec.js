@@ -31,9 +31,24 @@ describe("Langton", function(){
         expect(langton.config.largeur).toBe(20);
     })
 
-    it("doit avoir une liste de grille contenant le chemin de la fourmi", ()=>{
+    it("doit avoir une  grille contenant les cases noires de la fourmi", ()=>{
         expect(langton.grille).toBeDefined();
     })
+
+    it("doit connaitre la position et la direction de la fourmi", ()=>{
+        expect(langton.fourmi.position.x).toBeDefined();
+        expect(langton.fourmi.position.y).toBeDefined();
+        expect(langton.fourmi.direction).toBeDefined();
+    })
+
+    it("doit pouvoir dire si la fourmi est sur une case noire", ()=>{
+        langton.grille = [{x: 0, y: 0}];
+        langton.fourmi.position.x = 0;
+        langton.fourmi.position.y = 0;
+        expect(langton.estSurUneCaseNoire()).toBeTruthy();
+    })
+
+
 
 
 });
