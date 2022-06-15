@@ -31,5 +31,9 @@ describe("Langton", function(){
         expect(langton.config.largeur).toBe(20);
     })
 
+    it("doit avoir une liste de grille contenant le chemin de la fourmi", ()=>{
+        expect(langton.grille).toBeDefined();
+    })
+
 
 });

@@ -7,5 +7,7 @@ module.exports = function Langton({hauteur, largeur}){
         hauteur,
         largeur
     }
+
+    self.grille = [];
     return self;
 }
