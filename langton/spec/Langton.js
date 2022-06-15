@@ -35,5 +35,9 @@ module.exports = function Langton({hauteur, largeur}){
         { x: self.fourmi.position.x, y: self.fourmi.position.y + 1 } // bas
     ]
 
+    self.tourner = (direction)=>{
+        self.fourmi.position.x += self.voisinage()[direction].x
+    }
+
     return self;
 }

@@ -67,7 +67,7 @@ describe("Langton", function () {
 
 
     describe("pour tourner", () => {
-        beforeEach(()=>{
+        beforeEach(() => {
             langton.fourmi.position.x = 0;
             langton.fourmi.position.y = 0;
         })
@@ -78,7 +78,7 @@ describe("Langton", function () {
         // -1, 0    |[0, 0] | 1, 0
         // -1, 1    | 0, 1  | 1, 1
         // ========================
-        it("doit pouvoir localiser les cases voisines",()=>{
+        it("doit pouvoir localiser les cases voisines", () => {
             expect(langton.voisinage()).toEqual([
                 { x: -1, y: 0 },
                 { x: 0, y: -1 },
@@ -92,9 +92,25 @@ describe("Langton", function () {
             expect(langton.historique).toEqual([]);
         })
 
-        // venant de la gauche (-1, 0)
-        // - si elle tourne à gauche, elle doit se trouver sur la case (-1, 0)
-        // - si elle tourne à droite, elle doit se trouver sur la case (1, 0)
+
+        describe("venant de la gauche", () => {
+            // venant de la gauche (-1, 0)
+            // - si elle tourne à gauche, elle doit se trouver sur la case (-1, 0)
+            // - si elle tourne à droite, elle doit se trouver sur la case (1, 0)
+            beforeEach(() =>
+                langton.historique = [{ position: { x: -1, y: 0 }, grille: [] }]
+            )
+            it("doit appliquer (-1, 0) à la fourmi pour tourner à gauche", () => {
+                langton.tourner(langton.GAUCHE);
+                expect(langton.fourmi.position.x).toBe(-1);
+                expect(langton.fourmi.position.y).toBe(0);
+            })
+            it("doit appliquer (1, 0) à la fourmi pour tourner à droite", () => {
+                langton.tourner(langton.DROITE);
+                expect(langton.fourmi.position.x).toBe(1);
+                expect(langton.fourmi.position.y).toBe(0);
+            })
+        })
         // venant de la droite (5,6)
         // - si elle tourne à gauche, elle doit se trouver sur la case (6,5): (1, 0)
         // - si elle tourne à droite, elle doit se trouver sur la case (4,5): (-1, 0)
