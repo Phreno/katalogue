@@ -77,10 +77,6 @@ describe("Langton", function () {
                 expect(langton.offset()).toEqual({ x: -1, y: 0 });
             })
 
-            it("doit déterminer la provenance", ()=>{
-                expect(langton.provenance()).toEqual(langton.GAUCHE);
-            })
-
             it("doit tourner à droite si la case est noire (0, 1)", ()=>{
                 langton.grille = [{ x: 0, y: 0 }];
                 langton.avancer();

@@ -29,16 +29,11 @@ module.exports = function Langton() {
 
     self.offset = () => self.historique.slice(-1)[0]
 
-    self.provenance = () =>
-        self.voisinage
-            .findIndex(voisin => voisin.x === self.x + self.offset().x && voisin.y === self.y + self.offset().y)
-
     self.avancer = () => {
-        switch(self.provenance()){
-            case self.GAUCHE:
-                self.y += self.estSurUneCaseNoire() ? 1 : -1
-                break;
-        }
+        let offset = self.offset()
+        self.estSurUneCaseNoire() && Object.keys(offset).forEach(key => offset[key] *= -1)
+            self.x += offset.y
+            self.y += offset.x
     }
 
     return self;
