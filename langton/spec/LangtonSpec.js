@@ -48,6 +48,13 @@ describe("Langton", function(){
         expect(langton.estSurUneCaseNoire()).toBeTruthy();
     })
 
+    it("doit tourner à gauche si la case est blanche", ()=>{
+        langton.grille = [];
+        langton.fourmi.position.x = 0;
+        langton.fourmi.position.y = 0;
+        expect(langton.estSurUneCaseNoire()).toBeFalsy();
+        expect(langton.fourmi.direction()).toBe('gauche');
+    })
 
 
 

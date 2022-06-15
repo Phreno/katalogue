@@ -15,7 +15,7 @@ module.exports = function Langton({hauteur, largeur}){
             x: 0,
             y: 0,
         },
-        direction: 'droite'
+        direction: ()=> self.estSurUneCaseNoire() ? 'droite' : 'gauche'
     }
 
     self.estSurUneCaseNoire = ()=>{
