@@ -74,7 +74,7 @@ describe("Langton", function () {
             // ========================
 
             it("doit retourner l'offset de la case précédente", () => {
-                expect(langton.offset()).toEqual({ x: -1, y: 0 });
+                expect(langton.precedent()).toEqual({ x: -1, y: 0 });
             })
 
             it("doit tourner à droite si la case est noire (0, 1)", ()=>{
@@ -92,7 +92,7 @@ describe("Langton", function () {
             })
         })
 
-
+ 
 
         // - si elle tourne à gauche, elle doit se trouver sur la case (-1, 0)
         // - si elle tourne à droite, elle doit se trouver sur la case (1, 0)

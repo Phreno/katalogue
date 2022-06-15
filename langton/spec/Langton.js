@@ -27,13 +27,13 @@ module.exports = function Langton() {
         { x: 0, y: 1 } // bas
     ]
 
-    self.offset = () => self.historique.slice(-1)[0]
+    self.precedent = () => self.historique.slice(-1)[0]
 
     self.avancer = () => {
-        let offset = self.offset()
+        let offset = self.precedent()
         self.estSurUneCaseNoire() && Object.keys(offset).forEach(key => offset[key] *= -1)
-            self.x += offset.y
-            self.y += offset.x
+        self.x += offset.y
+        self.y += offset.x
     }
 
     return self;
