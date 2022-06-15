@@ -5,6 +5,8 @@ module.exports = function Langton() {
     self.historique = [
         { x: -1, y: 0 }
     ];
+
+    // TODO: migrer dans l'historique pour faire une liste chainée
     self.x = 0;
     self.y = 0;
 
