@@ -90,9 +90,15 @@ describe("Langton", function () {
                 expect(langton.x).toBe(0);
                 expect(langton.y).toBe(-1);
             })
+
+            it("doit historiser la position de la fourmi", () => {
+                langton.grille = [{ x: 0, y: 0 }];
+                langton.avancer();
+                expect(langton.historique).toEqual([{ x: -1, y: 0 }, { x: 0, y: 0 }]);
+            })
         })
 
- 
+
 
         // - si elle tourne à gauche, elle doit se trouver sur la case (-1, 0)
         // - si elle tourne à droite, elle doit se trouver sur la case (1, 0)

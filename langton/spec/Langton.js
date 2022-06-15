@@ -1,12 +1,10 @@
 module.exports = function Langton() {
     let self = {};
 
-
     self.GAUCHE = 0
     self.HAUT = 1
     self.DROITE = 2
     self.BAS = 3
-
 
     self.grille = [];
     self.historique = [
@@ -30,13 +28,12 @@ module.exports = function Langton() {
     self.precedent = () => self.historique.slice(-1)[0]
 
     self.avancer = () => {
-        let offset = self.precedent()
-        self.estSurUneCaseNoire() && Object.keys(offset).forEach(key => offset[key] *= -1)
+        let offset = { ...self.precedent() }
+        self.estSurUneCaseNoire() && Object.keys(offset).forEach(key => Math.abs(offset[key]) && (offset[key] *= -1))
+        self.historique.push({ x: self.x, y: self.y })
         self.x += offset.y
         self.y += offset.x
     }
 
     return self;
-
-
 }
