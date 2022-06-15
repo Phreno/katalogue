@@ -10,25 +10,8 @@ describe("Langton", function () {
     var langton;
 
     beforeEach(() => {
-        langton = new Langton({});
-    })
+        langton = new Langton();
 
-    it("doit avoir une propriété de configuration", () => {
-        expect(langton.config).toBeDefined();
-    })
-
-    it("doit avoir une hauteur de 10 par défault", () => {
-        expect(langton.config.hauteur).toBe(10);
-    });
-
-    it("doit avoir une largeur de 10 par défault", () => {
-        expect(langton.config.largeur).toBe(10);
-    });
-
-    it("doit pouvoir surcharger la configuration lors de l'initialisation", () => {
-        langton = new Langton({ hauteur: 20, largeur: 20 });
-        expect(langton.config.hauteur).toBe(20);
-        expect(langton.config.largeur).toBe(20);
     })
 
     it("doit avoir une  grille contenant les cases noires de la fourmi", () => {
@@ -36,40 +19,40 @@ describe("Langton", function () {
     })
 
     it("doit connaitre la position et la direction de la fourmi", () => {
-        expect(langton.fourmi.position.x).toBeDefined();
-        expect(langton.fourmi.position.y).toBeDefined();
-        expect(langton.fourmi.direction).toBeDefined();
+        expect(langton.x).toBeDefined();
+        expect(langton.y).toBeDefined();
+        expect(langton.direction).toBeDefined();
     })
 
     it("doit pouvoir dire si la fourmi est sur une case noire", () => {
         langton.grille = [{ x: 0, y: 0 }];
-        langton.fourmi.position.x = 0;
-        langton.fourmi.position.y = 0;
+        langton.x = 0;
+        langton.y = 0;
         expect(langton.estSurUneCaseNoire()).toBeTruthy();
     })
 
     it("doit tourner à gauche si la case est blanche", () => {
         langton.grille = [];
-        langton.fourmi.position.x = 0;
-        langton.fourmi.position.y = 0;
+        langton.x = 0;
+        langton.y = 0;
         expect(langton.estSurUneCaseNoire()).toBeFalsy();
-        expect(langton.fourmi.direction()).toBe('gauche');
+        expect(langton.direction()).toBe('gauche');
     })
 
     it("doit tourner à droite si la case est noire", () => {
         langton.grille = [{ x: 0, y: 0 }];
-        langton.fourmi.position.x = 0;
-        langton.fourmi.position.y = 0;
+        langton.x = 0;
+        langton.y = 0;
         expect(langton.estSurUneCaseNoire()).toBeTruthy();
-        expect(langton.fourmi.direction()).toBe('droite');
+        expect(langton.direction()).toBe('droite');
     })
 
 
 
     describe("pour tourner", () => {
         beforeEach(() => {
-            langton.fourmi.position.x = 0;
-            langton.fourmi.position.y = 0;
+            langton.x = 0;
+            langton.y = 0;
         })
         // Exemple avec les coordonnées (x, y).
         // Fourmi sur la case (0, 0)
