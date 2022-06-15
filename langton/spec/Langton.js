@@ -1,4 +1,4 @@
-module.exports = function Langton({hauteur, largeur}){
+module.exports = function Langton({ hauteur, largeur }) {
     (!hauteur) && (hauteur = 10);
     (!largeur) && (largeur = 10);
 
@@ -15,29 +15,27 @@ module.exports = function Langton({hauteur, largeur}){
 
 
     self.grille = [];
-    self.historique = [];
+    self.historique = [
+        { x: 0, y: 0, direction: self.HAUT }
+    ];
     self.fourmi = {
         position: {
             x: 0,
             y: 0,
         },
-        direction: ()=> self.estSurUneCaseNoire() ? 'droite' : 'gauche'
+        direction: () => self.estSurUneCaseNoire() ? 'droite' : 'gauche'
     }
 
-    self.estSurUneCaseNoire = ()=>{
+    self.estSurUneCaseNoire = () => {
         return self.grille.find(cell => cell.x === self.fourmi.position.x && cell.y === self.fourmi.position.y)
     }
 
-    self.voisinage = ()=>[
+    self.voisinage = () => [
         { x: self.fourmi.position.x - 1, y: self.fourmi.position.y }, // gauche
         { x: self.fourmi.position.x, y: self.fourmi.position.y - 1 }, // haut
         { x: self.fourmi.position.x + 1, y: self.fourmi.position.y }, // droite
         { x: self.fourmi.position.x, y: self.fourmi.position.y + 1 } // bas
     ]
-
-    self.tourner = (direction)=>{
-        self.fourmi.position.x += self.voisinage()[direction].x
-    }
 
     return self;
 }

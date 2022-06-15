@@ -89,31 +89,16 @@ describe("Langton", function () {
         })
 
         it("doit historiser les positions de la fourmi", () => {
-            expect(langton.historique).toEqual([]);
+            expect(langton.historique).toEqual([{x: 0, y: 0, direction: langton.HAUT}]);
         })
 
 
-        describe("venant de la gauche", () => {
-            // venant de la gauche (-1, 0)
-            // - si elle tourne à gauche, elle doit se trouver sur la case (-1, 0)
-            // - si elle tourne à droite, elle doit se trouver sur la case (1, 0)
-            beforeEach(() =>
-                langton.historique = [{ position: { x: -1, y: 0 }, grille: [] }]
-            )
-            it("doit appliquer (-1, 0) à la fourmi pour tourner à gauche", () => {
-                langton.tourner(langton.GAUCHE);
-                expect(langton.fourmi.position.x).toBe(-1);
-                expect(langton.fourmi.position.y).toBe(0);
-            })
-            it("doit appliquer (1, 0) à la fourmi pour tourner à droite", () => {
-                langton.tourner(langton.DROITE);
-                expect(langton.fourmi.position.x).toBe(1);
-                expect(langton.fourmi.position.y).toBe(0);
-            })
-        })
-        // venant de la droite (5,6)
-        // - si elle tourne à gauche, elle doit se trouver sur la case (6,5): (1, 0)
-        // - si elle tourne à droite, elle doit se trouver sur la case (4,5): (-1, 0)
+        // venant de la gauche (-1, 0)
+        // - si elle tourne à gauche, elle doit se trouver sur la case (-1, 0)
+        // - si elle tourne à droite, elle doit se trouver sur la case (1, 0)
+        // venant de la droite (1, 0)
+        // - si elle tourne à gauche, elle doit se trouver sur la case (1, 0)
+        // - si elle tourne à droite, elle doit se trouver sur la case (-1, 0)
         // venant du haut (4,5)
         // - si elle tourne à gauche, elle doit se trouver sur la case (5,6): (0, 1)
         // - si elle tourne à droite, elle doit se trouver sur la case (5,4): (0, -1)
