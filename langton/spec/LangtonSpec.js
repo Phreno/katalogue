@@ -51,7 +51,7 @@ describe("Langton", function () {
                 expect(langton.y).toBe(-1)
             })
 
-            it("doit historiser la position de la fourmi", () => {
+            it("doit tourner 3 fois à gauche depuis le départ", () => {
                 expect(langton.precedent.x).toBe(-1)
                 expect(langton.precedent.y).toBe(0)
                 expect(langton.x).toBe(0)
@@ -66,6 +66,11 @@ describe("Langton", function () {
                 expect(langton.precedent.y).toBe(-1)
                 expect(langton.x).toBe(-1)
                 expect(langton.y).toBe(-1)
+                langton.avancer()
+                expect(langton.precedent.x).toBe(-1)
+                expect(langton.precedent.y).toBe(-1)
+                expect(langton.x).toBe(-1)
+                expect(langton.y).toBe(0)
             })
         })
 
