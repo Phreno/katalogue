@@ -23,12 +23,6 @@ describe("Langton", function () {
         expect(langton.y).toBe(0)
     })
 
-    it("doit pouvoir dire si la fourmi est sur une case noire", () => {
-        langton.grille = [{ x: 0, y: 0 }]
-        expect(langton.estSurUneCaseNoire()).toBeTruthy()
-    })
-
-
     describe("pour tourner", () => {
 
         it("doit historiser les positions de la fourmi", () => {
@@ -52,21 +46,26 @@ describe("Langton", function () {
             })
 
             it("doit tourner à gauche si la case est blanche (0, -1)", ()=>{
-                langton.grille = []
                 langton.avancer()
                 expect(langton.x).toBe(0)
                 expect(langton.y).toBe(-1)
             })
 
-            fit("doit historiser la position de la fourmi", () => {
-                langton.grille = []
+            it("doit historiser la position de la fourmi", () => {
+                expect(langton.precedent.x).toBe(-1)
+                expect(langton.precedent.y).toBe(0)
+                expect(langton.x).toBe(0)
+                expect(langton.y).toBe(0)
                 langton.avancer()
+                expect(langton.precedent.x).toBe(0)
+                expect(langton.precedent.y).toBe(0)
+                expect(langton.x).toBe(0)
+                expect(langton.y).toBe(-1)
                 langton.avancer()
-                console.log(langton)
-                expect(langton.x).toEqual(-1)
-                expect(langton.y).toEqual(-1)
-                expect(langton.precedent.x).toEqual(0)
-                expect(langton.precedent.y).toEqual(-1)
+                expect(langton.precedent.x).toBe(0)
+                expect(langton.precedent.y).toBe(-1)
+                expect(langton.x).toBe(-1)
+                expect(langton.y).toBe(-1)
             })
         })
 

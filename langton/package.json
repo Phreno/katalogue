@@ -7,7 +7,7 @@
     "test": "**/*.js"
   },
   "scripts": {
-    "test": "npx jasmine --reporter=jasmine-ts-console-reporter",
+    "test": "npx jasmine --reporter=jasmine-ts-console-reporter --fail-fast",
     "watch": "npm-watch"
   },
   "author": "",
