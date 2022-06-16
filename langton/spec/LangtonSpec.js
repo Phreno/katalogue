@@ -1,78 +1,72 @@
-let Langton = require('./Langton');
+let Langton = require('./Langton')
 
 describe("init", () => {
     it("doit lancer les tests", function () {
-        expect(true).toBe(true);
-    });
+        expect(true).toBe(true)
+    })
 })
 
 describe("Langton", function () {
-    var langton;
+    var langton
 
     beforeEach(() => {
-        langton = new Langton();
+        langton = new Langton()
 
     })
 
     it("doit avoir une  grille contenant les cases noires de la fourmi", () => {
-        expect(langton.grille).toBeDefined();
+        expect(langton.grille).toBeDefined()
     })
 
     it("doit connaitre la position et la direction de la fourmi", () => {
-        expect(langton.x).toBe(0);
-        expect(langton.y).toBe(0);
+        expect(langton.x).toBe(0)
+        expect(langton.y).toBe(0)
     })
 
     it("doit pouvoir dire si la fourmi est sur une case noire", () => {
-        langton.grille = [{ x: 0, y: 0 }];
-        expect(langton.estSurUneCaseNoire()).toBeTruthy();
+        langton.grille = [{ x: 0, y: 0 }]
+        expect(langton.estSurUneCaseNoire()).toBeTruthy()
     })
 
 
     describe("pour tourner", () => {
-        // Exemple avec les coordonnées (x, y).
-        // Fourmi sur la case (0, 0)
-        // ------------------------
-        // -1, -1   | 0, -1 | 1, -1
-        // -1, 0    |[0, 0] | 1, 0
-        // -1, 1    | 0, 1  | 1, 1
-        // ========================
 
-
-        it("doit historiser les positions de la fourmi", () =>
-            expect(langton.historique)
-                .toEqual([{ x:-1, y: 0 }])
-        )
+        it("doit historiser les positions de la fourmi", () => {
+            expect(langton.x).toEqual(0)
+            expect(langton.y).toEqual(0)
+        })
 
         describe("en venant de la gauche (-1, 0)", () => {
-            // ------------------------
-            // -1, -1   | 0, -1 | 1, -1
-            // -1, 0    |[0, 0] | 1, 0
-            // -1, 1    | 0, 1  | 1, 1
-            // ========================
+
 
             it("doit retourner l'offset de la case précédente", () => {
-                expect(langton.precedent()).toEqual({ x: -1, y: 0 });
+                expect(langton.precedent.x).toEqual( -1)
+                expect(langton.precedent.y).toEqual( 0)
             })
 
             it("doit tourner à droite si la case est noire (0, 1)", ()=>{
-                langton.grille = [{ x: 0, y: 0 }];
-                langton.avancer();
-                expect(langton.x).toBe(0);
-                expect(langton.y).toBe(1);
+                langton.grille = [{ x: 0, y: 0 }]
+                langton.avancer()
+                expect(langton.x).toBe(0)
+                expect(langton.y).toBe(1)
             })
 
             it("doit tourner à gauche si la case est blanche (0, -1)", ()=>{
-                langton.grille = [];
-                langton.avancer();
-                expect(langton.x).toBe(0);
-                expect(langton.y).toBe(-1);
+                langton.grille = []
+                langton.avancer()
+                expect(langton.x).toBe(0)
+                expect(langton.y).toBe(-1)
             })
 
-            it("doit historiser la position de la fourmi", () => {
-                langton.grille = [{ x: 0, y: 0 }];
-                langton.avancer();
-                expect(langton.historique).toEqual([{ x: -1, y: 0 }, { x: 0, y: 0 }]);
+            fit("doit historiser la position de la fourmi", () => {
+                langton.grille = []
+                langton.avancer()
+                langton.avancer()
+                console.log(langton)
+                expect(langton.x).toEqual(-1)
+                expect(langton.y).toEqual(-1)
+                expect(langton.precedent.x).toEqual(0)
+                expect(langton.precedent.y).toEqual(-1)
             })
         })
 
@@ -92,6 +86,6 @@ describe("Langton", function () {
         // - si elle tourne à gauche, elle doit se trouver sur la case (5,4): (0, -1)
         // - si elle tourne à droite, elle doit se trouver sur la case (5,6): (0, 1)
 
-    });
+    })
 
-});
+})

@@ -1,28 +1,25 @@
+// ------------------------
+// -1, -1   | 0, -1 | 1, -1
+// -1, 0    |[0, 0] | 1, 0
+// -1, 1    | 0, 1  | 1, 1
+// ========================
 module.exports = function Langton() {
     let self = {};
-
     self.grille = [];
-    self.historique = [
-        { x: -1, y: 0 }
-    ];
-
-    // TODO: migrer dans l'historique pour faire une liste chainée
-    self.x = 0;
-    self.y = 0;
-
-    self.estSurUneCaseNoire = () => {
-        return self.grille.find(cell => cell.x === self.x && cell.y === self.y)
-    }
-
-    self.precedent = () => self.historique.slice(-1)[0]
-
+    self.precedent = { x: -1, y: 0 }
+    self.x = 0
+    self.y = 0
+    self.estSurUneCaseNoire = () => self.grille.find(cell => cell.x === self.x && cell.y === self.y)
     self.avancer = () => {
-        let offset = { ...self.precedent() }
+        console.log("\nDEBUG: avancer")
+        console.log("\n------------------------------------------------------")
+        let offset = { ...self.precedent }
         self.estSurUneCaseNoire() && Object.keys(offset).forEach(key => Math.abs(offset[key]) && (offset[key] *= -1))
-        self.historique.push({ x: self.x, y: self.y })
+        self.precedent = { x: self.x, y: self.y, precedent: self.precedent }
         self.x += offset.y
         self.y += offset.x
+        console.debug(self)
+        console.log("\n======================================================")
     }
-
-    return self;
+    return self
 }
