@@ -23,6 +23,17 @@ describe("Langton", function () {
         expect(langton.y).toBe(0)
     })
 
+    it("doit alterner la case courante lorsqu'un pas est effectué", ()=>{
+        langton.avancer()
+        expect(langton.grille).toContain({x:0,y:0})
+        langton.avancer()
+        expect(langton.grille).toContain({x:0,y:-1})
+        langton.avancer()
+        expect(langton.grille).toContain({x:-1,y:-1})
+        langton.avancer()
+        expect(langton.grille).toContain({x:-1,y:0})
+    })
+
     describe("pour tourner", () => {
 
         it("doit historiser les positions de la fourmi", () => {
@@ -70,6 +81,11 @@ describe("Langton", function () {
                 expect(langton.precedent.x).toBe(-1)
                 expect(langton.precedent.y).toBe(-1)
                 expect(langton.x).toBe(-1)
+                expect(langton.y).toBe(0)
+                langton.avancer()
+                expect(langton.precedent.x).toBe(-1)
+                expect(langton.precedent.y).toBe(0)
+                expect(langton.x).toBe(0)
                 expect(langton.y).toBe(0)
             })
         })
