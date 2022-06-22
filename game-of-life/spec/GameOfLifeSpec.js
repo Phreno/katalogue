@@ -50,4 +50,33 @@ describe("gameOfLife", ()=>{
 
         })
     })
-})
+    it("doit pouvoir compter le voisinage de chaque cellule",()=>{
+        expect(gameOfLife.denombreVoisins).toBeDefined()
+    })
+    describe("denombreVoisin", ()=>{
+        it("doit laisser la carte vide lorsque aucune cellule cochée", ()=>{
+            gameOfLife.denombreVoisins()
+            gameOfLife.carte.forEach(ligne => {
+                ligne.forEach(cellule => expect(cellule).toBe(0))
+            });
+        })
+        fit("doit denombrer le bon nombre de voisin lorsque 1 cellule cochée", ()=>{
+            /* par exemple :
+            ----- 00000
+            ----- 00100
+            --*-- 01410
+            ----- 00100
+            ----- 00000
+            */
+           gameOfLife.tick({x: 2, y: 2})
+           gameOfLife.denombreVoisins()
+           expect(gameOfLife.carte[1][2]).toBe(1)
+           expect(gameOfLife.carte[2][1]).toBe(1)
+           expect(gameOfLife.carte[2][2]).toBe(4)
+           expect(gameOfLife.carte[2][3]).toBe(1)
+           expect(gameOfLife.carte[3][2]).toBe(1)
+        })
+    })
+
+
+})  
