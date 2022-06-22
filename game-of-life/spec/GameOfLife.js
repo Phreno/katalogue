@@ -36,9 +36,8 @@ module.exports = function () {
                 let voisins = []
                 for (let y = ligneIndex - 1; y <= ligneIndex + 1; y++){
                     for (let x = colIndex - 1; x <= colIndex +1; x++){
-                        if(ligneIndex !== y && colIndex !== x){
-                            voisins.push(lire({x, y}))
-                        }
+                            if(ligneIndex !== y || colIndex !== x)
+                                voisins.push(lire({x, y}))
                     }
                 }
                 const compte = voisins.reduce((acc, cur)=>acc+cur, 0)
@@ -49,7 +48,6 @@ module.exports = function () {
                 }
             })
         })
-        self.dessine()
     }
 
     return self
