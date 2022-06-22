@@ -80,6 +80,27 @@ describe("gameOfLife", ()=>{
            expect(gameOfLife.voisins[3][2]).toBe(1)
            expect(gameOfLife.voisins[3][3]).toBe(1)
         })
+
+        it("doit denombrer le bon nombre de voisin lorsque 1 cellule cochée", ()=>{
+            /* par exemple :
+            ----- 00000
+            ----- 01110
+            --*-- 01010
+            ----- 01110
+            ----- 00000
+            */
+           gameOfLife.tick([{x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}])
+           gameOfLife.denombreVoisins()
+           expect(gameOfLife.voisins[1][1]).toBe(1)
+           expect(gameOfLife.voisins[1][2]).toBe(1)
+           expect(gameOfLife.voisins[1][3]).toBe(1)
+           expect(gameOfLife.voisins[2][1]).toBe(1)
+           expect(gameOfLife.voisins[2][2]).toBe(0)
+           expect(gameOfLife.voisins[2][3]).toBe(1)
+           expect(gameOfLife.voisins[3][1]).toBe(1)
+           expect(gameOfLife.voisins[3][2]).toBe(1)
+           expect(gameOfLife.voisins[3][3]).toBe(1)
+        })
     })
 
 

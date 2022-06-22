@@ -48,6 +48,7 @@ module.exports = function () {
                 }
             })
         })
+        self.dessine()
     }
 
     return self
