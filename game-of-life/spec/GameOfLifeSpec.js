@@ -43,5 +43,11 @@ describe("gameOfLife", ()=>{
             expect(gameOfLife.carte[1][1]).toBe(1)
             expect(gameOfLife.carte[2][2]).toBe(1)
         })
+        it("doit pouvoir décocher une case (1x1", ()=>{
+            gameOfLife.tick({x: 1, y: 1})
+            gameOfLife.tick({x: 1, y: 1})
+            expect(gameOfLife.carte[1][1]).toBe(0)
+
+        })
     })
 })

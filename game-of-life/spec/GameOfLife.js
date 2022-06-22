@@ -4,18 +4,19 @@ module.exports = function () {
     }
 
     let range = [...Array(10).keys()]
-    range.forEach((el, i, ar) => self.carte.push(ar.map(e=>0)))
+    range.forEach((el, i, ar) => self.carte.push(ar.map(e => 0)))
 
-    self.dessine = ()=>{
-        self.carte.forEach(ligne=>{
-            console.log(ligne.map(e=>e?"*":" ").join(""))
+    self.dessine = () => {
+        self.carte.forEach(ligne => {
+            console.log(ligne.map(e => e ? "*" : " ").join(""))
         })
     }
 
-    self.tick = (ticks)=>{
+    self.tick = (ticks) => {
+        tick = (coord) => self.carte[coord.x][coord.y] = self.carte[coord.x][coord.y] ? 0 : 1
         ticks.forEach
-            ? ticks.forEach(el=>self.carte[el.x][el.y] = 1)
-            : self.carte[ticks.x][ticks.y] = 1
+            ? ticks.forEach(tick)
+            : tick(ticks)
     }
 
     return self
