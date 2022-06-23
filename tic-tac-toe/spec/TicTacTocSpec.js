@@ -83,4 +83,18 @@ describe("TicTacToe", () => {
         it("doit retourner false si toutes les cases sont vides", () => expect(game.colonisateur(game.colonne(0))).toBeFalsy())
     })
     it("doit pouvoir récupérer un tableau qui contient les colonnes", ()=>expect(game.colonnes).toBeDefined())
+    it("doit pouvoir récupérer un tableau qui contient les diagonales", ()=> expect(game.diagonales).toBeDefined())
+    describe("diagonales", ()=>{
+        it("doit contenir les diagonales", ()=>{
+            game.tick("00", {x:0, y:0})
+            game.tick("11", {x:1, y:1})
+            game.tick("22", {x:2, y:2})
+            game.tick("20", {x:2, y:0})
+            game.tick("02", {x:0, y:2})
+            expect(game.diagonales()).toEqual([
+                ["00", "11", "22"],
+                ["02", "11", "20"]
+            ])
+        })
+    })
 })
