@@ -10,7 +10,7 @@ module.exports = function TicTacToe() {
     let estTerminé = () => grille.every(el => el)
     let colonne = (index) => grille.map(el => el[index])
     let colonnes = () => range.map(i => colonne(i))
-    let ligne = (index) => grille[index]
+    let lignes = () => grille
     let colonisateur = (segment) => segment.reduce((acc, cur) => acc === cur && cur)
     return {
         grille,
@@ -19,7 +19,7 @@ module.exports = function TicTacToe() {
         estTerminé,
         colonne,
         colonisateur,
-        ligne,
+        lignes,
         colonnes
     }
 }
