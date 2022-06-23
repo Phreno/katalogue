@@ -82,4 +82,5 @@ describe("TicTacToe", () => {
         })
         it("doit retourner false si toutes les cases sont vides", () => expect(game.colonisateur(game.colonne(0))).toBeFalsy())
     })
+    it("doit pouvoir récupérer un tableau qui contient les colonnes", ()=>expect(game.colonnes).toBeDefined())
 })
