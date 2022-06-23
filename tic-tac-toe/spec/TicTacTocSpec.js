@@ -89,12 +89,16 @@ describe("TicTacToe", () => {
             game.tick("00", {x:0, y:0})
             game.tick("11", {x:1, y:1})
             game.tick("22", {x:2, y:2})
-            game.tick("20", {x:2, y:0})
-            game.tick("02", {x:0, y:2})
+            game.tick("02", {x:2, y:0})
+            game.tick("20", {x:0, y:2})
             expect(game.diagonales()).toEqual([
                 ["00", "11", "22"],
-                ["02", "11", "20"]
+                ["20", "11", "02"]
             ])
+            console.log(game.dessine())
+            console.log(game.lignes())
+            console.log(game.colonnes())
+            console.log(game.diagonales())
         })
     })
 })

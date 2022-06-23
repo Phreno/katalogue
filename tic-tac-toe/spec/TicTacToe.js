@@ -15,7 +15,6 @@ module.exports = function TicTacToe() {
         [grille[0][0], grille[1][1], grille[2][2]],
         [grille[2][0], grille[1][1], grille[0][2]]
     ]
-
     let colonisateur = (segment) => segment.reduce((acc, cur) => acc === cur && cur)
     return {
         grille,
