@@ -27,10 +27,8 @@ module.exports = function TicTacToe() {
         return grille.every(el => el)
     }
     let colonne = (index) => grille.map(el => el[index])
-    let ligne = (index) => grille[0]
-    let colonisateur = (segment) => {
-        return segment.reduce((acc, cur) => acc === cur && cur)
-    }
+    let ligne = (index) => grille[index]
+    let colonisateur = (segment) => segment.reduce((acc, cur) => acc === cur && cur)
     return {
         grille,
         dessine,
